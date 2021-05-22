@@ -1,46 +1,146 @@
-# Getting Started with Create React App
+# Age of Empires Wiki
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project has been created for assigment. It's powered by typescript, react, scss,redux toolkit and redux-saga.
 
-## Available Scripts
+You can check demo from here:
 
-In the project directory, you can run:
+https://not-yet.com/
 
-### `yarn start`
+It's using mock json server. Here's the server:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+https://not-yet.herokuapp.com/
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Installation
 
-### `yarn test`
+Firstly clone repo and install package via npm or yarn. You can start react server with:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+yarn start
+npm start
+```
 
-### `yarn build`
+To connect local json-server, you should change the baseURL from serverConfig.ts
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+// export const baseURL = "http://localhost:3004/"; //for Local Server
+export const baseURL = "https://not-yet.com/"; // for Prod Server
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+For running json-server on your local, check following repo:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+https://github.com/yusuferenayas/aoe-json
 
-### `yarn eject`
+## Folder Structure
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Assets => Images, icons, svgs etc.<br/>
+Components => React shared components<br/>
+Config => Constant variables and Server side configs<br/>
+Model => Type definitions for service reponses. <br/>
+Hooks => React Hooks<br/>
+Services => Rest API paths and types<br/>
+Stores => Global stores (Context API, Redux etc.)<br/>
+Theme => Style customization, SASS structre and Material UI Customization<br/>
+Utils => Helper methods<br/>
+Views => React components wrappers <br/>
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Assets
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Section for images, videos, sounds and etc. media files.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Components
 
-## Learn More
+Components of project are shelters here. There is a Button component for example structure.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Config
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Constant variables for example Rest API path can be defined in this folder. New variables can be added according to project requirments.
+
+### Hooks
+
+Helper hooks for project. There is a useTotalPrice hooks right now, which calculates total price of my cart.
+
+### Models
+
+Get/Post requests' data types can be created in this folder.
+
+### Store
+
+Redux stores are here. Created with redux-toolkit. There are 3 stores for managing service requests. Service requests are controlled by redux-saga. Cart store controls the product add and remove process.
+
+### Services
+
+Queries and Mutations are being defined in this folder. All requests are making via Axios. So making the structure more efficient, there is a wrapper which is called AxiosHelper. Url parameter of this wrapper is type of pathURLs and it's exported from Config folder.
+
+### Usage of Theme Variables
+
+Variable SCSS file has constraits within itself.
+
+```
+// _variables.scss
+
+$primary-color: #1ea4ce;
+$alternative-color: #147594;
+$secondary-color: #f2f0fd;
+$title-color: #6f6f6f;
+$product-border-color: #f3f0fe;
+
+$gray-scale-semi-light-color: #525252;
+$gray-scale-color: #191919;
+$gray-scale-light-color: #697488;
+...
+```
+
+Variable module is a connector between SCSS and TSX files. You can define variables, which are being shared.
+
+```
+// _variables.module.scss
+
+:export {
+  primaryColor: $primary-color;
+  alternativeColor: $alternative-color;
+  secondaryColor: $secondary-color;
+  titleColor: $title-color;
+  productBorderColor: $product-border-color;
+
+  grayScaleColor: $gray-scale-color;
+  grayScaleLightColor: $gray-scale-light-color;
+  grayScaleSemiLightColor: $gray-scale-semi-light-color;
+  
+  ...
+}
+```
+
+Although there is variable.ts which has SASS variables as module.
+
+```
+// variables.ts
+
+type ThemeVariables = {
+  primaryColor: string;
+  alternativeColor: string;
+  secondaryColor: string;
+  titleColor: string;
+  productBorderColor: string;
+  grayScaleColor: string;
+  ...
+};
+
+```
+
+### Utils
+
+Utilities helper functions and methods can be defined in this folder.
+
+### Views
+
+Wraper for shared components. It containts part of pages.
+
+
+### Test
+
+Can be run tests with:
+
+```
+npm test
+yarn test
+```
