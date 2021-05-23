@@ -3,6 +3,7 @@ import reduxStore from "Stores";
 import {appIsLoading} from "Stores/App";
 import {CircularProgress} from "@material-ui/core";
 import Navigator from "Navigator";
+import "index.scss";
 
 const App = () => {
   return (

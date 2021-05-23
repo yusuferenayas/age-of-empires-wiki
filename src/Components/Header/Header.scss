@@ -1,0 +1,11 @@
+@import "index.scss";
+
+#header {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 25px;
+
+  li {
+    padding-left: 10px;
+  }
+}
