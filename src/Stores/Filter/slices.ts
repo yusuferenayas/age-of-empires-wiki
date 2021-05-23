@@ -37,6 +37,7 @@ const filterSlice = createSlice({
 });
 
 export const storeSelectedAge = (state: RootState) => state.filter.ageFilter;
+export const storeSelectedCosts = (state: RootState) => state.filter.costs;
 
 export const {setAgeFilter, setCostsFilter} = filterSlice.actions;
 

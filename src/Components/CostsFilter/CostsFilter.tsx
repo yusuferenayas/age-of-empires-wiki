@@ -74,7 +74,7 @@ const CostsFilter: FC<CostsFilterProps> = ({label}) => {
           max={200}
           getAriaValueText={valuetext}
           onChange={handleSliderChange}
-          step={10}
+          step={5}
           marks={marks}
           valueLabelDisplay="on"
           disabled={!isFilterChecked}
