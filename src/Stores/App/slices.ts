@@ -24,6 +24,8 @@ const appSlice = createSlice({
 
 export const appIsLoading = (state: RootState) => state.app.isLoading;
 export const storeUnits = (state: RootState) => state.app.units;
+export const storeSelectedUnits = (state: RootState, id: number) =>
+  state.app.units?.find((unit) => unit.id === id);
 
 export const {onAppInit, onAppReady, setUnits} = appSlice.actions;
 
