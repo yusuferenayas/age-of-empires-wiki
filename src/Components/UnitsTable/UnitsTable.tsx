@@ -11,8 +11,11 @@ import {
 } from "@material-ui/core";
 import {tableColumns} from "Config";
 import {useUnitsFilters} from "Hooks";
+import {routePath} from "Navigator/routes";
+import {useHistory} from "react-router-dom";
 
 const UnitsTable = () => {
+  const history = useHistory();
   const tableCellProps: TableCellProps = {align: "left"};
   const unitsToShow = useUnitsFilters();
 
@@ -31,25 +34,25 @@ const UnitsTable = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {unitsToShow.map((unit, index) => (
+              {unitsToShow.map(({id, name, age, cost}, index) => (
                 <TableRow
                   key={index}
                   hover
-                  onClick={() => console.log("show unit detail")}
+                  onClick={() => history.push(routePath.unitDetails, {id})}
                 >
                   <TableCell component="th" scope="row" width="10%">
-                    {unit.id}
+                    {id}
                   </TableCell>
                   <TableCell {...tableCellProps} width="30%">
-                    {unit.name}
+                    {name}
                   </TableCell>
                   <TableCell {...tableCellProps} width="30%">
-                    {unit.age}
+                    {age}
                   </TableCell>
                   <TableCell {...tableCellProps} width="30%">
-                    {unit.cost?.Food ? " Food: " + unit.cost?.Food : ""}
-                    {unit.cost?.Gold ? " Gold: " + unit.cost?.Gold : ""}
-                    {unit.cost?.Wood ? " Wood: " + unit.cost?.Wood : ""}
+                    {cost?.Food ? " Food: " + cost?.Food : ""}
+                    {cost?.Gold ? " Gold: " + cost?.Gold : ""}
+                    {cost?.Wood ? " Wood: " + cost?.Wood : ""}
                   </TableCell>
                 </TableRow>
               ))}
