@@ -9,23 +9,21 @@ import {
   TableCellProps,
   Box,
 } from "@material-ui/core";
-import {useSelector} from "react-redux";
-import {storeUnits} from "Stores/App";
-
-const columns = ["ID", "Name", "Age", "Costs"];
+import {tableColumns} from "Config";
+import {useUnitsFilters} from "Hooks";
 
 const UnitsTable = () => {
-  const units = useSelector(storeUnits);
   const tableCellProps: TableCellProps = {align: "left"};
-  console.log(units);
+  const unitsToShow = useUnitsFilters();
+
   return (
     <div id="unitsTable">
-      <Box paddingTop={3}>
+      <Box paddingTop={3} paddingBottom={6}>
         <TableContainer component={Paper}>
           <Table>
             <TableHead>
               <TableRow>
-                {columns.map((column, index) => (
+                {tableColumns.map((column, index) => (
                   <TableCell {...tableCellProps} key={index}>
                     <b>{column}</b>
                   </TableCell>
@@ -33,26 +31,28 @@ const UnitsTable = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {units &&
-                units.length > 0 &&
-                units.map((unit, index) => (
-                  <TableRow
-                    key={index}
-                    hover
-                    onClick={() => console.log("show unit detail")}
-                  >
-                    <TableCell component="th" scope="row">
-                      {unit.id}
-                    </TableCell>
-                    <TableCell {...tableCellProps}>{unit.name}</TableCell>
-                    <TableCell {...tableCellProps}>{unit.age}</TableCell>
-                    <TableCell {...tableCellProps}>
-                      {unit.cost?.Food ? " Food: " + unit.cost?.Food : ""}
-                      {unit.cost?.Gold ? " Gold: " + unit.cost?.Gold : ""}
-                      {unit.cost?.Wood ? " Wood: " + unit.cost?.Wood : ""}
-                    </TableCell>
-                  </TableRow>
-                ))}
+              {unitsToShow.map((unit, index) => (
+                <TableRow
+                  key={index}
+                  hover
+                  onClick={() => console.log("show unit detail")}
+                >
+                  <TableCell component="th" scope="row" width="10%">
+                    {unit.id}
+                  </TableCell>
+                  <TableCell {...tableCellProps} width="30%">
+                    {unit.name}
+                  </TableCell>
+                  <TableCell {...tableCellProps} width="30%">
+                    {unit.age}
+                  </TableCell>
+                  <TableCell {...tableCellProps} width="30%">
+                    {unit.cost?.Food ? " Food: " + unit.cost?.Food : ""}
+                    {unit.cost?.Gold ? " Gold: " + unit.cost?.Gold : ""}
+                    {unit.cost?.Wood ? " Wood: " + unit.cost?.Wood : ""}
+                  </TableCell>
+                </TableRow>
+              ))}
             </TableBody>
           </Table>
         </TableContainer>

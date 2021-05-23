@@ -1,5 +1,7 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {AgeFilterTypes} from "Config";
+import {CostsFilterTypes} from "Config";
+import {RootState} from "Stores";
 import {FilterState} from "./types";
 
 export const initialState: FilterState = {
@@ -11,7 +13,7 @@ export const initialState: FilterState = {
   },
 };
 
-const appSlice = createSlice({
+const filterSlice = createSlice({
   name: "app",
   initialState,
   reducers: {
@@ -21,11 +23,21 @@ const appSlice = createSlice({
     ) => {
       state.ageFilter = action.payload;
     },
+    setCostsFilter: (
+      state: FilterState,
+      action: PayloadAction<{
+        costFilterType: CostsFilterTypes;
+        costCount: number | null;
+      }>
+    ) => {
+      const {costFilterType, costCount} = action.payload;
+      state.costs[costFilterType] = costCount;
+    },
   },
 });
 
-// export const storeUnits = (state: RootState) => state.app.units;
+export const storeSelectedAge = (state: RootState) => state.filter.ageFilter;
 
-export const {setAgeFilter} = appSlice.actions;
+export const {setAgeFilter, setCostsFilter} = filterSlice.actions;
 
-export default appSlice.reducer;
+export default filterSlice.reducer;

@@ -1,6 +1,6 @@
 interface Cost {
-  Wood: number;
-  Gold: number;
+  Wood?: number;
+  Gold?: number;
   Food?: number;
 }
 
