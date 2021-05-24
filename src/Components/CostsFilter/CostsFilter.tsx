@@ -1,3 +1,4 @@
+import "./CostsFilter.scss";
 import React, {FC, useState} from "react";
 import {
   Box,
@@ -52,8 +53,8 @@ const CostsFilter: FC<CostsFilterProps> = ({label}) => {
   };
 
   return (
-    <Box display="flex" paddingBottom={4}>
-      <Box width="10%">
+    <Box paddingBottom={4} id="costsFilter">
+      <Box className="costsFilter__labelContainer">
         <Typography variant="body1" gutterBottom color="primary">
           <FormControlLabel
             control={
@@ -68,7 +69,7 @@ const CostsFilter: FC<CostsFilterProps> = ({label}) => {
           />
         </Typography>
       </Box>
-      <Box paddingLeft={4} paddingTop={2} width="100%">
+      <Box className="costsFilter__sliderContainer">
         <Slider
           value={value}
           max={200}

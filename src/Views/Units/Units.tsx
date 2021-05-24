@@ -1,4 +1,3 @@
-import "./Units.scss";
 import {Container, Typography, Box} from "@material-ui/core";
 import {AgesFilter, CostsFilter, UnitsTable} from "Components";
 

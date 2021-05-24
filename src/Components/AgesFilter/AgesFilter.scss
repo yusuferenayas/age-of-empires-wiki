@@ -4,5 +4,9 @@
   .MuiTab-root {
     padding: 15px 30px;
     min-width: auto;
+
+    @include tiny-device {
+      padding: 10px 3px;
+    }
   }
 }

@@ -18,7 +18,7 @@ const AgesFilter = () => {
   };
 
   return (
-    <Box marginBottom={7}>
+    <Box marginBottom={7} id="agesFilter">
       <Tabs
         value={ageIndex}
         indicatorColor="primary"

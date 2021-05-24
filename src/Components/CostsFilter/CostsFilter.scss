@@ -1,0 +1,31 @@
+@import "index.scss";
+
+#costsFilter {
+  display: flex;
+
+  @include tiny-device {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .costsFilter {
+    &__labelContainer {
+      width: 10%;
+
+      @include tiny-device {
+        width: 100%;
+        text-align: center;
+      }
+    }
+
+    &__sliderContainer {
+      width: 100%;
+      padding-top: 16px;
+      padding-left: 32px;
+
+      @include tiny-device {
+        padding-left: 0;
+      }
+    }
+  }
+}
