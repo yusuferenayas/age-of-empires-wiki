@@ -4,11 +4,11 @@ This project has been created for assigment. It's powered by typescript, react, 
 
 You can check demo from here:
 
-https://not-yet.com/
+https://age-of-empires-wiki.herokuapp.com/
 
 It's using mock json server. Here's the server:
 
-https://not-yet.herokuapp.com/
+https://aoe-server.herokuapp.com/
 
 ## Installation
 
@@ -28,7 +28,7 @@ export const baseURL = "https://not-yet.com/"; // for Prod Server
 
 For running json-server on your local, check following repo:
 
-https://github.com/yusuferenayas/aoe-json
+https://github.com/yusuferenayas/aoe-json-server
 
 ## Folder Structure
 
@@ -80,13 +80,6 @@ Variable SCSS file has constraits within itself.
 
 $primary-color: #1ea4ce;
 $alternative-color: #147594;
-$secondary-color: #f2f0fd;
-$title-color: #6f6f6f;
-$product-border-color: #f3f0fe;
-
-$gray-scale-semi-light-color: #525252;
-$gray-scale-color: #191919;
-$gray-scale-light-color: #697488;
 ...
 ```
 
@@ -97,15 +90,7 @@ Variable module is a connector between SCSS and TSX files. You can define variab
 
 :export {
   primaryColor: $primary-color;
-  alternativeColor: $alternative-color;
-  secondaryColor: $secondary-color;
-  titleColor: $title-color;
-  productBorderColor: $product-border-color;
-
-  grayScaleColor: $gray-scale-color;
-  grayScaleLightColor: $gray-scale-light-color;
-  grayScaleSemiLightColor: $gray-scale-semi-light-color;
-  
+  alternativeColor: $alternative-color;  
   ...
 }
 ```
@@ -118,10 +103,6 @@ Although there is variable.ts which has SASS variables as module.
 type ThemeVariables = {
   primaryColor: string;
   alternativeColor: string;
-  secondaryColor: string;
-  titleColor: string;
-  productBorderColor: string;
-  grayScaleColor: string;
   ...
 };
 
